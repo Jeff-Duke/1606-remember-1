@@ -5,10 +5,12 @@
     {{model.date}}
   </p>
 
-  <p>
-    {{model.notes}}
-  </p>
-
+  {{#if model.notes}}
+    <p>
+      {{model.notes}}
+    </p>
+  {{/if}}
+  
 </div>
 
 {{outlet}}
