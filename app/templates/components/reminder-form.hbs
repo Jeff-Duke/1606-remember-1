@@ -1,0 +1,15 @@
+<form class="new-reminder--form"{{action (action formSubmitted reminder) on="submit"}}>
+  <label>
+    Title
+    {{input type="text" value=reminder.title class="spec-input-title"}}
+  </label>
+  <label>
+    Reminder Date
+    {{input type="date" value=reminder.date class="spec-input-date"}}
+  </label>
+  <label>
+    Notes
+    {{input type="text" value=reminder.notes class="spec-input-notes"}}
+  </label>
+  <button class="new-reminder--submit">Submit</button>
+</form>
