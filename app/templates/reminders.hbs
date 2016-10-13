@@ -1,9 +1,14 @@
 <div>
   <ul>
     {{#each model as |reminder|}}
-      {{#link-to 'reminders.reminder' reminder}}
-        <li class="spec-reminder-item"> {{reminder.title}} </li>
-      {{/link-to}}
+      <li>
+        {{#link-to 'reminders.reminder' reminder}}
+          <p class="spec-reminder-item">
+            {{reminder.title}}
+          </p>
+        {{/link-to}}
+        <p class='list-date'>{{reminder.date}}</p>
+      </li>
     {{/each}}
   </ul>
 </div>
