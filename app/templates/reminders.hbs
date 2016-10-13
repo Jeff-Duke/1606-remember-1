@@ -1,7 +1,7 @@
 <div>
   <ul>
     {{#each model as |reminder|}}
-      {{#link-to 'reminder' reminder}}
+      {{#link-to 'reminders.reminder' reminder}}
         <li class="spec-reminder-item"> {{reminder.title}} </li>
       {{/link-to}}
     {{/each}}
