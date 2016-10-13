@@ -1,11 +1,6 @@
 <div class="reminder">
   <h3 class="spec-reminder-title">{{model.title}}</h3>
 
-
-  {{#if isEditing}}
-  <p>hey buddy you suck</p>
-  {{/if}}
-
   <p class="spec-reminder-date">
     {{model.date}}
   </p>
@@ -16,9 +11,7 @@
     </p>
   {{/if}}
 
-
   <button {{action 'editReminder'}}>edit</button>
-
 
 </div>
 
