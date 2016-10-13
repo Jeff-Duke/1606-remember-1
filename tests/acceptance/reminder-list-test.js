@@ -1,6 +1,6 @@
 /* globals server */
 
-import { test, skip } from 'qunit';
+import { test } from 'qunit';
 import moduleForAcceptance from 'remember/tests/helpers/module-for-acceptance';
 
 import Ember from 'ember';
@@ -15,6 +15,7 @@ moduleForAcceptance('Acceptance | reminders list', {
 });
 
 test('viewing the homepage', function(assert) {
+
   visit('/');
 
   andThen(function() {
@@ -23,7 +24,8 @@ test('viewing the homepage', function(assert) {
   });
 });
 
-skip('clicking on an individual item', function(assert) {
+test('clicking on an individual item', function(assert) {
+
   visit('/');
   click('.spec-reminder-item:first');
 
