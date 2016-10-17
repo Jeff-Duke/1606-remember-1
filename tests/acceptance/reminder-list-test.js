@@ -78,6 +78,10 @@ test('clicking on new and creating a new item', function(assert) {
   click('.new-reminder--submit');
 
   andThen(function() {
+    assert.equal(Ember.$('.spec-reminder-title').text().trim(), 'brush teeth');
+    assert.equal(Ember.$('.spec-reminder-date').text().trim(), 'Wed Oct 19 2016 18:00:00 GMT-0600 (MDT)');
+    assert.equal(Ember.$('.spec-reminder-notes').text().trim(), 'also floss, probably should do this more often');
+
     assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), 'brush teeth');
     assert.equal(Ember.$('.list-date:first').text().trim(), 'Wed Oct 19 2016 18:00:00 GMT-0600 (MDT)');
   });
