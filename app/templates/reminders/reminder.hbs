@@ -3,7 +3,7 @@
 
   {{#if isEditing}}
     {{reminder-form reminder=model formSubmitted=(action 'saveReminder' model) button-text="Save"}}
-    <button class="revert-changes-button"  disabled={{isDirtyReminder}} {{action 'revertChanges' model}}>Undo</button>
+    <button class="revert-changes-button"  disabled={{ unless model.hasDirtyAttributes 'true'}} {{action 'revertChanges' model}}>Undo</button>
 
   {{else}}
     <p class="spec-reminder-date">
@@ -17,6 +17,11 @@
     {{/if}}
 
     <button {{action 'editReminder'}} class="edit-reminder-button">Edit</button>
+
+    {{#link-to 'reminders.index'}}
+        <button {{action 'deleteReminder' model}} class="delete-reminder-button">Delete</button>
+    {{/link-to}}
+
 
   {{/if}}
 
