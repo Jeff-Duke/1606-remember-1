@@ -1,20 +1,7 @@
 <div class="new-reminder">
   <h2>New Reminder</h2>
-  <form class="new-reminder--form"{{action 'createReminder' model on="submit"}}>
-    <label>
-      Title
-      {{input type="text" value=model.title class="spec-input-title"}}
-    </label>
-    <label>
-      Reminder Date
-      {{input type="date" value=model.date class="spec-input-date"}}
-    </label>
-    <label>
-      Notes
-      {{input type="text" value=model.notes class="spec-input-notes"}}
-    </label>
-    <button class="new-reminder--submit">Submit</button>
-  </form>
+
+  {{reminder-form reminder=model formSubmitted=(action 'createReminder') button-text="Submit"}}
 
 </div>
 

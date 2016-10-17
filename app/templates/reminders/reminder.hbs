@@ -1,17 +1,23 @@
 <div class="reminder">
   <h3 class="spec-reminder-title">{{model.title}}</h3>
 
-  <p class="spec-reminder-date">
-    {{model.date}}
-  </p>
+  {{#if isEditing}}
+    {{reminder-form reminder=model formSubmitted=(action 'saveReminder' model) button-text="Save"}}
 
-  {{#if model.notes}}
-    <p class="spec-reminder-notes">
-      {{model.notes}}
+  {{else}}
+    <p class="spec-reminder-date">
+      {{model.date}}
     </p>
-  {{/if}}
 
-  <button {{action 'editReminder'}}>edit</button>
+    {{#if model.notes}}
+      <p class="spec-reminder-notes">
+        {{model.notes}}
+      </p>
+    {{/if}}
+
+    <button {{action 'editReminder'}} class="edit-reminder-button">Edit</button>
+
+  {{/if}}
 
 </div>
 
