@@ -2,7 +2,7 @@
   <h3 class="spec-reminder-title">{{model.title}}</h3>
 
   {{#if isEditing}}
-    {{reminder-form reminder=model formSubmitted=(action 'saveReminder' model)}}
+    {{reminder-form reminder=model formSubmitted=(action 'saveReminder' model) button-text="Save"}}
 
   {{else}}
     <p class="spec-reminder-date">
@@ -15,7 +15,7 @@
       </p>
     {{/if}}
 
-    <button {{action 'editReminder'}}>edit</button>
+    <button {{action 'editReminder'}}>Edit</button>
 
   {{/if}}
 
