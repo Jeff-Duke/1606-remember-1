@@ -59,7 +59,7 @@ test('clicking on new and creating a new item', function(assert) {
   });
 });
 
-test('clicking on new and creating a new item', function(assert) {
+test('clicking editing and saving a record', function(assert) {
 
   visit('/');
   click('.spec-reminder-item:first');
@@ -84,5 +84,34 @@ test('clicking on new and creating a new item', function(assert) {
 
     assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), 'brush teeth');
     assert.equal(Ember.$('.list-date:first').text().trim(), 'Wed Oct 19 2016 18:00:00 GMT-0600 (MDT)');
+  });
+});
+
+test('reverting changes to a record that is being updated', function(assert) {
+  let originalTitle;
+  visit('/');
+  click('.spec-reminder-item:first');
+
+  andThen(function() {
+    originalTitle =  find('.spec-reminder-title').text().trim();
+  });
+
+  click('.edit-reminder-button');
+
+  andThen(function() {
+    assert.equal(find('.revert-changes-button').is(':disabled'), true);
+  });
+
+  fillIn('.spec-input-title', 'brush teeth');
+
+  andThen(function() {
+    assert.equal(find('.spec-input-title').val(), "brush teeth");
+    assert.equal(find('.revert-changes-button').is(':disabled'), false);
+  });
+
+  click('.revert-changes-button');
+
+  andThen(function() {
+    assert.equal(Ember.$('.spec-reminder-title').text().trim(), originalTitle);
   });
 });
