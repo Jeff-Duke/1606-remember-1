@@ -31,8 +31,4 @@ export default Ember.Controller.extend({
       });
     }
   },
-
-  isDirtyReminder: true,
-
-
 });
