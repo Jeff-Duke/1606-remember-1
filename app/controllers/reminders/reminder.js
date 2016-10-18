@@ -16,8 +16,9 @@ export default Ember.Controller.extend({
           notes: reminder.notes
         });
         targetReminder.save();
+      }).then(() => {
+        this.toggleProperty('isEditing');
       });
-      this.toggleProperty('isEditing');
     },
 
     revertChanges(reminderForm) {
