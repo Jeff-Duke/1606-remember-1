@@ -7,17 +7,9 @@ export default Ember.Controller.extend({
     },
 
     saveReminder(reminderForm) {
-      let reminder = reminderForm.getProperties('title', 'date', 'notes', 'id');
-      reminder.date = new Date(reminder.date);
-      this.get('store').findRecord('reminder', reminder.id).then(function(targetReminder) {
-        targetReminder.setProperties({
-          title: reminder.title,
-          date: reminder.date,
-          notes: reminder.notes
-        });
-        targetReminder.save();
-      }).then(() => {
-        this.toggleProperty('isEditing');
+      let newDate = reminderForm.getProperties('date');
+      reminderForm.set('date', new Date(newDate.date));
+      reminderForm.save().then(() => { this.toggleProperty('isEditing');
       });
     },
 
