@@ -6,6 +6,8 @@
 
     <button class="revert-changes-button"  disabled={{ unless model.hasDirtyAttributes 'true'}} {{action 'revertChanges' model}}>Undo</button>
 
+<!-- we need to bubble up an action which affects the model.  or each model is available in the each on the reminders -->
+
   {{else}}
     <p class="spec-reminder-date">
       {{model.date}}

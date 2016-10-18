@@ -107,6 +107,7 @@ test('reverting changes to a record that is being updated', function(assert) {
   andThen(function() {
     assert.equal(find('.spec-input-title').val(), "brush teeth");
     assert.equal(find('.revert-changes-button').is(':disabled'), false);
+    assert.equal(find('.unsaved-reminder').length, 1);
   });
 
   click('.revert-changes-button');

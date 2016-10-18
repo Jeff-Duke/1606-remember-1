@@ -1,10 +1,13 @@
 <div class='reminder-list'>
   <ul>
     {{#each model as |reminder|}}
-      <li>
+      <li class={{if reminder.hasDirtyAttributes 'unsaved-reminder' 'saved-reminder'}}>
         {{#link-to 'reminders.reminder' reminder}}
           <p class="spec-reminder-item">
             {{reminder.title}}
+            {{#if reminder.hasDirtyAttributes}}
+              💩
+            {{/if}}
           </p>
         {{/link-to}}
         <p class='list-date'>{{reminder.date}}</p>
