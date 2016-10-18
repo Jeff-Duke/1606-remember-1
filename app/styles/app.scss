@@ -4,13 +4,24 @@ a {
   text-decoration: none;
 }
 
-.ember-view {
-  display: flex;
-  flex-direction: row;
+header {
   width: 100%;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.reminder-container {
+  display:flex;
+  flex-direciton: row;
+}
+
 .reminder-list {
+  display: flex;
+  flex-direction: column;
   width: 25%;
   border: 1px solid black;
   li {
