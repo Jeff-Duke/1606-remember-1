@@ -154,6 +154,20 @@ test('deleting a reminder removes that reminder and navigates to reminders.index
   andThen(function() {
     assert.equal(Ember.$('.spec-reminder-title').text().trim(), originalTitle);
 
+    });
   });
+});
+
+test('add a new reminder and filter to see that reminder only', function(assert) {
+  visit('/');
+  click('.new-reminder--button');
+  fillIn('.spec-input-title', 'brush teeth');
+  fillIn('.spec-input-date', "2016-10-20");
+  fillIn('.spec-input-notes', 'also floss, probably should do this more often');
+  click('.new-reminder--submit');
+  fillIn('.search-reminder-input', 'brush teeth');
+
+  andThen(function() {
+    assert.equal(find('.spec-reminder-item').length, 1);
   });
 });
