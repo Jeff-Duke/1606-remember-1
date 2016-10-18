@@ -128,5 +128,32 @@ test('deleting a reminder removes that reminder and navigates to reminders.index
   andThen(function() {
     assert.equal(currentURL(), '/');
     assert.equal(Ember.$('.spec-reminder-item').length, 4);
+  let originalTitle;
+  visit('/');
+  click('.spec-reminder-item:first');
+
+  andThen(function() {
+    originalTitle =  find('.spec-reminder-title').text().trim();
+  });
+
+  click('.edit-reminder-button');
+
+  andThen(function() {
+    assert.equal(find('.revert-changes-button').is(':disabled'), true);
+  });
+
+  fillIn('.spec-input-title', 'brush teeth');
+
+  andThen(function() {
+    assert.equal(find('.spec-input-title').val(), "brush teeth");
+    assert.equal(find('.revert-changes-button').is(':disabled'), false);
+  });
+
+  click('.revert-changes-button');
+
+  andThen(function() {
+    assert.equal(Ember.$('.spec-reminder-title').text().trim(), originalTitle);
+
+  });
   });
 });
