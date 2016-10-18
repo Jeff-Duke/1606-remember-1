@@ -19,9 +19,7 @@
 
     <button {{action 'editReminder'}} class="edit-reminder-button">Edit</button>
 
-    {{#link-to 'reminders.index'}}
-        <button {{action 'deleteReminder' model}} class="delete-reminder-button">Delete</button>
-    {{/link-to}}
+    <button {{action 'deleteReminder' model}} class="delete-reminder-button">Delete</button>
 
 
   {{/if}}

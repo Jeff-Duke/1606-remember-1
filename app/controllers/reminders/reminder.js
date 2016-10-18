@@ -30,14 +30,5 @@ export default Ember.Controller.extend({
         }
       });
     },
-
-    deleteReminder(reminderForm) {
-      let reminder = reminderForm.getProperties('id');
-      this.get('store').findRecord('reminder', reminder.id, {
-        backgroundReload: false
-      }).then(targetReminder => {
-        targetReminder.destroyRecord();
-      });
-    }
   },
 });
