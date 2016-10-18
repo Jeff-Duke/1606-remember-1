@@ -115,3 +115,19 @@ test('reverting changes to a record that is being updated', function(assert) {
     assert.equal(Ember.$('.spec-reminder-title').text().trim(), originalTitle);
   });
 });
+
+test('deleting a reminder removes that reminder and navigates to reminders.index', function(assert) {
+  visit('/');
+  click('.spec-reminder-item:first');
+
+  andThen(function() {
+    assert.equal(Ember.$('.spec-reminder-item').length, 5);
+  });
+
+  click('.delete-reminder-button');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/');
+    assert.equal(Ember.$('.spec-reminder-item').length, 4);
+  });
+});
