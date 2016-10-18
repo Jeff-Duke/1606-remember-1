@@ -60,7 +60,7 @@ test('clicking on new and creating a new item', function(assert) {
 });
 
 test('clicking editing and saving a record', function(assert) {
-
+  //user visits homepage, selects first item, clicks edit, and enters new values for each input
   visit('/');
   click('.spec-reminder-item:first');
   click('.edit-reminder-button');
@@ -74,7 +74,7 @@ test('clicking editing and saving a record', function(assert) {
     assert.equal(find('.spec-input-notes').val(), "also floss, probably should do this more often");
     assert.equal(find('.new-reminder--submit').text(), "Save");
   });
-
+  //user saves those changes
   click('.new-reminder--submit');
 
   andThen(function() {
@@ -88,32 +88,30 @@ test('clicking editing and saving a record', function(assert) {
 });
 
 test('reverting changes to a record that is being updated', function(assert) {
+  //user visits page and clicks on first item, title of that item saved
   let originalTitle;
   visit('/');
   click('.spec-reminder-item:first');
-
   andThen(function() {
     originalTitle =  find('.spec-reminder-title').text().trim();
   });
-
+  //user clicks edit
   click('.edit-reminder-button');
-
   andThen(function() {
     assert.equal(find('.revert-changes-button').is(':disabled'), true);
   });
-
+  //user edits title
   fillIn('.spec-input-title', 'brush teeth');
-
   andThen(function() {
     assert.equal(find('.spec-input-title').val(), "brush teeth");
     assert.equal(find('.revert-changes-button').is(':disabled'), false);
     assert.equal(find('.unsaved-reminder').length, 1);
   });
-
+  //user clicks the revert button to undo changes
   click('.revert-changes-button');
-
   andThen(function() {
     assert.equal(Ember.$('.spec-reminder-title').text().trim(), originalTitle);
+    assert.equal(find('.unsaved-reminder').length, 0  );
   });
 });
 

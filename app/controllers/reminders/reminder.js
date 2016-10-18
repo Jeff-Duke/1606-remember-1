@@ -19,18 +19,10 @@ export default Ember.Controller.extend({
       }).then(() => {
         this.toggleProperty('isEditing');
       });
-
     },
 
     revertChanges(reminderForm) {
-      console.log('yo button still working', reminderForm.get('hasDirtyAttributes'));
-      let reminder = reminderForm.getProperties('title', 'date', 'notes', 'id');
-      this.get('store').findRecord('reminder', reminder.id).then(targetReminder => {
-        if (targetReminder.get('hasDirtyAttributes')) {
-          targetReminder.rollbackAttributes();
-          this.toggleProperty('isEditing');
-        }
-      });
+      reminderForm.rollbackAttributes();
     },
   },
 });
